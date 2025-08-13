@@ -1,0 +1,102 @@
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background: linear-gradient(to top left, #33ccff 0%, #ff99cc 100%);
+}
+#card {
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+    background-color: rgba(137, 43, 226, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    margin-left: -60px;
+}
+#clockcard {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+}
+#img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+#clock {
+    position: absolute;
+    font-size: 32px;
+    font-family: 'Garamond', serif;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-top: -30px;
+    pointer-events: none;
+}
+#msg {
+    font-size: 20px;
+    font-family: 'Garamond', serif;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+/* Shake Animation */
+@keyframes shake {
+    0% { transform: rotate(0deg);}
+    20% { transform: rotate(-45deg);}
+    40% { transform: rotate(45deg);}
+    60% { transform: rotate(-45deg);}
+    80% { transform: rotate(45deg);}
+    100% { transform: rotate(0deg);}
+}
+.shake {
+    animation: shake 1s ease-in-out;
+}
+/* Fountain */
+.fountain {
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    overflow: visible;
+}
+.fountain.left { left: -30px; }
+.fountain.right { right: -30px; }
+.fountain-img {
+    width: 60px;
+    height: 60px;
+    opacity: 1;
+    transform: scale(0.6);
+}
+@keyframes fountain-out {
+    0% {
+        transform: scale(0.3) translateY(0);
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2) translateY(-90px);
+        opacity: 0;
+    }
+}
+.fountain.on .fountain-img {
+    animation: fountain-out 1s cubic-bezier(.7,0,.3,1);
+}
+.fountain.on { opacity: 1; }
